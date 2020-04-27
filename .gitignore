@@ -1,0 +1,7 @@
+
+*.exe
+*.pdb
+*.cache
+.vs/Snake/v16/.suo
+Snake/bin/Debug/Snake.exe.config
+Snake/obj/Debug/Snake.csproj.FileListAbsolute.txt
