@@ -21,10 +21,33 @@ namespace Snake
             Symbol = symbol;
         }
 
+        public Point(Point p)
+        {
+            X = p.X;
+            Y = p.Y;
+            Symbol = p.Symbol;
+        }
+
+        internal void Move(int i, Direction direction)
+        {
+            switch (direction)
+            {
+                case Direction.Up: { Y = Y - i; break; }
+                case Direction.Down: { Y = Y + i; break; }
+                case Direction.Right: { X = X + i; break; }
+                case Direction.Left: { X = X - i; break; }
+            }
+        }
+
         public void Draw()
         {
             Console.SetCursorPosition(X, Y);
             Console.Write(Symbol);
+        }
+
+        public override string ToString()
+        {
+            return $"{X}, {Y}, {Symbol}";
         }
     }
 }
