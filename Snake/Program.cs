@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,11 +12,18 @@ namespace Snake
         static void Main(string[] args)
         {
             var p1 = new Point() { X = 1, Y = 3, Symbol = '*' };
-            p1.Draw();
             var p2 = new Point() { X = 4, Y = 5, Symbol = '#' };
-            p2.Draw();
             var p3 = new Point(4, 4, '*');
-            p3.Draw();
+
+            var pointList = new List<Point>();
+            pointList.Add(p1);
+            pointList.Add(p2);
+            pointList.Add(p3);
+
+            foreach (var p in pointList)
+            {
+                p.Draw();
+            }
 
             Console.ReadKey();
         }
