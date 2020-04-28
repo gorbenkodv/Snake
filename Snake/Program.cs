@@ -14,6 +14,8 @@ namespace Snake
             p1.Draw();
             var p2 = new Point() { X = 4, Y = 5, Symbol = '#' };
             p2.Draw();
+            var p3 = new Point(4, 4, '*');
+            p3.Draw();
 
             Console.ReadKey();
         }
