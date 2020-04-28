@@ -10,12 +10,11 @@ namespace Snake
     {
         static void Main(string[] args)
         {
-            var p1 = new Point() { X = 1, Y = 3, Symbol = '*' };
-            p1.Draw();
-            var p2 = new Point() { X = 4, Y = 5, Symbol = '#' };
-            p2.Draw();
-            var p3 = new Point(4, 4, '*');
-            p3.Draw();
+            var hLine = new HorizontalLine(5, 10, 3, '*');
+            hLine.Draw();
+
+            var vLine = new VerticalLine(3, 4, 8, '#');
+            vLine.Draw();
 
             Console.ReadKey();
         }
