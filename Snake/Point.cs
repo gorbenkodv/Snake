@@ -26,5 +26,12 @@ namespace Snake
             Console.SetCursorPosition(X, Y);
             Console.Write(Symbol);
         }
+
+        public void Reset()
+        {
+            X = 0; 
+            Y = 0; 
+            Symbol = '\0';
+        }
     }
 }
