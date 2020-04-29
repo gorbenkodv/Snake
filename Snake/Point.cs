@@ -28,15 +28,21 @@ namespace Snake
             Symbol = p.Symbol;
         }
 
-        internal void Move(int i, Direction direction)
+        internal void Move(int offset, Direction direction)
         {
             switch (direction)
             {
-                case Direction.Up: { Y = Y - i; break; }
-                case Direction.Down: { Y = Y + i; break; }
-                case Direction.Right: { X = X + i; break; }
-                case Direction.Left: { X = X - i; break; }
+                case Direction.Up: { Y = Y - offset; break; }
+                case Direction.Down: { Y = Y + offset; break; }
+                case Direction.Right: { X = X + offset; break; }
+                case Direction.Left: { X = X - offset; break; }
             }
+        }
+
+        internal void Clear()
+        {
+            Symbol = ' ';
+            Draw();
         }
 
         public void Draw()
