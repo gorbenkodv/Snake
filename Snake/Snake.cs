@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -36,6 +37,20 @@ namespace Snake
                 case ConsoleKey.RightArrow: { direction = Direction.Right; break; }
                 case ConsoleKey.LeftArrow: { direction = Direction.Left; break; }
             }
+        }
+
+        internal bool Eat(Point food)
+        {
+            var result = false;
+            var newHead = new Point(Points.Last());
+            newHead.Move(1, direction);
+            if (newHead.IsHit(food))
+            {
+                newHead.Draw();
+                Points.Add(newHead);
+                result = true;
+            }
+            return result;
         }
 
         void ClearTail()

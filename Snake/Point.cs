@@ -8,52 +8,57 @@ namespace Snake
 {
     class Point
     {
-        public int X { get; set; }
-        public int Y { get; set; }
-        public char Symbol { get; set; }
+        int x { get; set; }
+        int y { get; set; }
+        public char symbol { get; set; }
 
         public Point() { }
 
         public Point(int x, int y, char symbol)
         {
-            X = x;
-            Y = y;
-            Symbol = symbol;
+            this.x = x;
+            this.y = y;
+            this.symbol = symbol;
         }
 
         public Point(Point p)
         {
-            X = p.X;
-            Y = p.Y;
-            Symbol = p.Symbol;
+            x = p.x;
+            y = p.y;
+            symbol = p.symbol;
         }
 
         internal void Move(int offset, Direction direction)
         {
             switch (direction)
             {
-                case Direction.Up: { Y = Y - offset; break; }
-                case Direction.Down: { Y = Y + offset; break; }
-                case Direction.Right: { X = X + offset; break; }
-                case Direction.Left: { X = X - offset; break; }
+                case Direction.Up: { y = y - offset; break; }
+                case Direction.Down: { y = y + offset; break; }
+                case Direction.Right: { x = x + offset; break; }
+                case Direction.Left: { x = x - offset; break; }
             }
         }
 
         internal void Clear()
         {
-            Symbol = ' ';
+            symbol = ' ';
             Draw();
         }
 
         public void Draw()
         {
-            Console.SetCursorPosition(X, Y);
-            Console.Write(Symbol);
+            Console.SetCursorPosition(x, y);
+            Console.Write(symbol);
         }
 
         public override string ToString()
         {
-            return $"{X}, {Y}, {Symbol}";
+            return $"{x}, {y}, {symbol}";
+        }
+
+        internal bool IsHit(Point food)
+        {
+            return food.x == x & food.y == y;
         }
     }
 }
