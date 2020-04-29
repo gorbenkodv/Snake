@@ -13,14 +13,13 @@ namespace Snake
         {
             Console.SetWindowSize(80, 25);
             Console.CursorVisible = false;
-            var topLine = new HorizontalLine(0, 79, 0, '+');
-            topLine.Draw();
-            var bottomLine = new HorizontalLine(0, 79, 24, '+');
-            bottomLine.Draw();
-            var leftLine = new VerticalLine(0, 0, 24, '+');
-            leftLine.Draw();
-            var rightLine = new VerticalLine(79, 0, 24, '+');
-            rightLine.Draw();
+
+            var borders = new List<Figure>();
+            borders.Add(new HorizontalLine(0, 79, 0, '+'));
+            borders.Add(new HorizontalLine(0, 79, 24, '+'));
+            borders.Add(new VerticalLine(0, 0, 24, '+'));
+            borders.Add(new VerticalLine(79, 0, 24, '+'));
+            foreach (var border in borders) border.Draw();
 
             var tail = new Point(10, 10, '*');
             var snake = new Snake(tail, 10, Direction.Right);

@@ -39,6 +39,9 @@ namespace Snake
             }
         }
 
+        /// <summary>
+        /// Служит для очистки точки на консоли
+        /// </summary>
         internal void Clear()
         {
             symbol = ' ';

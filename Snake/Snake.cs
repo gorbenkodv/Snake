@@ -66,5 +66,15 @@ namespace Snake
             head.Draw();
             Points.Add(head);
         }
+
+        /// <summary>
+        /// Служит для отрисовки змейки на консоли
+        /// </summary>
+        public override void Draw()
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            base.Draw();
+            Console.ForegroundColor = ConsoleColor.White;
+        }
     }
 }
