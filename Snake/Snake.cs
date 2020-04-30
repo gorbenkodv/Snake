@@ -39,18 +39,37 @@ namespace Snake
             }
         }
 
+        internal bool IsHitTail()
+        {
+            var head = Points.Last();
+            for (var i = 0; i <= Points.Count - 3; i++)
+            {
+                if (Points[i].IsHit(head)) return true;
+            }                
+            return false;
+        }
+
+        internal bool IsHit(Barrier barrier)
+        {
+            var head = Points.Last();
+            foreach (var figure in barrier.Figures)
+            {
+                if (figure.IsHit(head)) return true; 
+            }
+            return false;
+        }
+
         internal bool Eat(Point food)
         {
-            var result = false;
             var newHead = new Point(Points.Last());
             newHead.Move(1, direction);
             if (newHead.IsHit(food))
             {
                 newHead.Draw();
                 Points.Add(newHead);
-                result = true;
+                return true;
             }
-            return result;
+            return false;
         }
 
         void ClearTail()
@@ -68,7 +87,7 @@ namespace Snake
         }
 
         /// <summary>
-        /// Служит для отрисовки змейки на консоли
+        /// Отрисовка змейки на консоли
         /// </summary>
         public override void Draw()
         {

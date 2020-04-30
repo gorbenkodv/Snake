@@ -14,12 +14,8 @@ namespace Snake
             Console.SetWindowSize(80, 25);
             Console.CursorVisible = false;
 
-            var borders = new List<Figure>();
-            borders.Add(new HorizontalLine(0, 79, 0, '+'));
-            borders.Add(new HorizontalLine(0, 79, 24, '+'));
-            borders.Add(new VerticalLine(0, 0, 24, '+'));
-            borders.Add(new VerticalLine(79, 0, 24, '+'));
-            foreach (var border in borders) border.Draw();
+            var walls = new Barrier(80, 25, '*');
+            walls.Draw();
 
             var tail = new Point(10, 10, '*');
             var snake = new Snake(tail, 10, Direction.Right);
@@ -31,6 +27,7 @@ namespace Snake
             ConsoleKeyInfo input = new ConsoleKeyInfo();
             while (true)
             {
+                if (snake.IsHit(walls) || snake.IsHitTail()) GameOver();                
                 if (snake.Eat(food))
                 {
                     food = foodCreator.CreateFood();
@@ -48,6 +45,27 @@ namespace Snake
                     snake.HandleKey(input.Key);
                 }                
             }
+        }
+
+        static void GameOver()
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            for (var i = 0; i < 3; i++) ShowGameOverMessage();
+            Thread.Sleep(1000);
+            Environment.Exit(0);
+        }
+
+        static void ShowGameOverMessage()
+        {
+            Console.Clear();
+            Thread.Sleep(200);
+            Console.SetCursorPosition(28, 10);
+            Console.WriteLine("===========================");
+            Console.SetCursorPosition(29, 12);
+            Console.WriteLine("И Г Р А   О К О Н Ч Е Н А");
+            Console.SetCursorPosition(28, 14);
+            Console.WriteLine("===========================");
+            Thread.Sleep(300);
         }
     }
 }
